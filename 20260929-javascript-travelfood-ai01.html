@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenData - 地方美食資料練習</title>
+    <link rel="stylesheet" href="css/myall.css">
+    <style>
+        :root {
+            --zelda-green: #2f5d50;
+            --zelda-dark-green: #183c35;
+            --zelda-light-green: #dce8c8;
+            --zelda-gold: #d6b65c;
+            --zelda-gold-light: #f3dfa0;
+            --zelda-brown: #5a4632;
+            --zelda-cream: #fff8df;
+            --zelda-shadow: rgba(35, 53, 38, 0.28);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background:
+                linear-gradient(rgba(224, 232, 199, .82), rgba(224, 232, 199, .82)),
+                url("../images/landspace01.avif") center / cover fixed;
+            color: var(--zelda-brown);
+            font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+        }
+
+        /* 網頁主標題 */
+        .mytitle-01 {
+            width: 100%;
+            padding: 28px 20px;
+            text-align: center;
+            color: var(--zelda-cream);
+            background:
+                linear-gradient(135deg,
+                    var(--zelda-dark-green),
+                    var(--zelda-green));
+            border-bottom: 5px solid var(--zelda-gold);
+            box-shadow: 0 5px 15px var(--zelda-shadow);
+            letter-spacing: 6px;
+            text-shadow: 2px 2px 0 var(--zelda-dark-green);
+            position: relative;
+        }
+
+        .mytitle-01::before,
+        .mytitle-01::after {
+            content: "◆";
+            color: var(--zelda-gold);
+            margin: 0 20px;
+        }
+
+        /* 卡片容器 */
+        .wrapper {
+            width: 1024px;
+            margin: 45px auto 0;
+            padding: 25px;
+            overflow: hidden;
+
+            background: rgba(255, 248, 223, .94);
+            border: 3px solid var(--zelda-gold);
+            border-radius: 18px;
+            box-shadow:
+                0 8px 25px var(--zelda-shadow),
+                inset 0 0 0 5px rgba(214, 182, 92, .15);
+        }
+
+        /* 餐廳卡片 */
+        .demo {
+            width: 32%;
+            min-height: 320px;
+            margin-top: 15px;
+            margin-right: 1%;
+            float: left;
+            overflow: hidden;
+
+            background: var(--zelda-cream);
+            border: 2px solid var(--zelda-gold);
+            border-radius: 14px;
+            box-shadow:
+                0 5px 12px var(--zelda-shadow),
+                inset 0 0 0 2px rgba(255, 255, 255, .6);
+
+            transition:
+                transform .3s ease,
+                box-shadow .3s ease;
+        }
+
+        .demo:hover {
+            transform: translateY(-8px);
+            box-shadow:
+                0 12px 22px rgba(24, 60, 53, .35),
+                0 0 0 3px var(--zelda-gold-light);
+        }
+
+        /* 餐廳圖片 */
+        .demo .logo {
+            width: 100%;
+            height: 220px;
+
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+
+            border-bottom: 4px solid var(--zelda-gold);
+            position: relative;
+        }
+
+        .demo .logo::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom,
+                    transparent 60%,
+                    rgba(24, 60, 53, .35));
+        }
+
+        /* 店家資訊 */
+        .mytitle-04 {
+            padding: 10px 16px;
+            color: var(--zelda-dark-green);
+            font-size: 17px;
+            font-weight: 700;
+            line-height: 1.5;
+            border-bottom: 1px dashed rgba(90, 70, 50, .25);
+        }
+
+        .mytitle-04::first-letter {
+            color: var(--zelda-green);
+        }
+
+        .demo .mytitle-04:last-child {
+            border-bottom: none;
+        }
+
+        /* 平板與手機 */
+        @media screen and (max-width: 1024px) {
+            .wrapper {
+                width: 94%;
+                padding: 15px;
+            }
+
+            .demo {
+                width: 100%;
+                margin-right: 0;
+            }
+
+            .mytitle-01 {
+                font-size: 28px;
+                letter-spacing: 3px;
+            }
+
+            .mytitle-01::before,
+            .mytitle-01::after {
+                margin: 0 8px;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .mytitle-01 {
+                padding: 22px 10px;
+                font-size: 23px;
+            }
+
+            .wrapper {
+                margin-top: 25px;
+                padding: 10px;
+                border-width: 2px;
+            }
+
+            .demo {
+                min-height: 300px;
+            }
+
+            .demo .logo {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="display-1 fw-900 mytitle-01">地方美食餐廳列表</div>
+    <div class="wrapper" id="foodlist">
+        <div class="demo">
+            <div class="logo bg-img" style="background-image: url(images/landspace01.avif);"></div>
+            <p class="mytitle-04">店家:xxx</p>
+            <p class="mytitle-04">電話:XXXXX</p>
+        </div>
+    </div>
+    <script src="js/jquery-4.0.0.js"></script>
+    <script src="js/TravelFood.js"></script>
+    <script>
+        console.log(food);
+        food.forEach(function (item) {
+            // console.log(item.Name);
+            // console.log(item.City);
+            // console.log(item.Email);
+            $("#foodlist").append('<div class="demo" id="foodlist"><div class="logo bg-img" style="background-image: url(' + item.PicURL + ');"></div><p class="mytitle-04">店家:' + item.Name + '</p><p class="mytitle-04">電話:' + item.Tel + '</p></div>');
+        });
+    </script>
+</body>
+
+</html>
