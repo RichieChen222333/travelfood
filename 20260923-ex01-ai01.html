@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>練習01. 使用CSS語法配置版面</title>
+    <link rel="stylesheet" href="css/myall.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--sb-bg-main);
+        }
+
+        .wrapper {
+            width: 1024px;
+            margin-top: 0px;
+            margin-bottom: 0;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .logo {
+            width: 1024px;
+            height: 220px;
+            background-color: rgb(54, 110, 110);
+            background-image: url(images/landspace03.avif);
+        }
+
+        .nav {
+            background-color: var(--sb-nav-bg);
+            text-align: center;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .nav ul {
+            display: inline-block;
+        }
+
+        .nav ul li {
+            float: left;
+            list-style-type: none;
+        }
+
+        .nav ul li a {
+            text-decoration: none;
+            background-color: var(--sb-nav-btn-bg);
+            color: var(--sb-nav-btn-color);
+            padding-top: 15px;
+            padding-bottom: 15px;
+            padding-left: 20px;
+            padding-right: 20px;
+            margin-left: 10px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 2px 2px var(--sb-nav-shadow);
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .nav ul li a:hover {
+            border-radius: 0px;
+            box-shadow: 4px 4px 4px 4px var(--sb-nav-hover-shadow);
+        }
+
+        .content {
+            padding: 30px 80px;
+            background-color: var(--sb-content-bg);
+        }
+
+        .content h1 {
+            text-align: center;
+            color: var(--sb-primary-text);
+            font-size: 48px;
+        }
+
+        .content p {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+
+        .content a {
+            display: block;
+            background-color: var(--sb-btn-bg);
+            width: 130px;
+            height: 40px;
+            margin-top: 20px;
+            margin-bottom: 0;
+            margin-left: auto;
+            margin-right: auto;
+            text-decoration: none;
+            color: var(--sb-btn-color);
+            text-align: center;
+            font-size: 22px;
+            line-height: 40px;
+            font-weight: bold;
+            box-shadow: 2px 2px 2px 2px var(--sb-btn-shadow);
+            border-radius: 5px;
+        }
+
+        .footer {
+            background-color: var(--sb-footer-bg);
+            color: var(--sb-footer-color);
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        /* 響應式RWD */
+        @media screen and (max-width: 1024px) {
+            .wrapper {
+                width: 95%;
+            }
+
+            .logo {
+                width: 100%;
+                height: 120px;
+                background-image: url(images/landspace01.avif);
+            }
+
+            .nav ul {
+                display: block;
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            .nav ul li {
+                float: none;
+            }
+
+            .nav ul li a {
+                display: block;
+                margin-left: 0;
+                margin-bottom: 5px;
+                padding-top: 5px;
+                padding-bottom: 5px;
+                border-radius: 0;
+                box-shadow: none;
+                font-size: 18px;
+            }
+
+            .content {
+                padding: 25px 30px;
+            }
+
+            .content h1 {
+                font-size: 36px;
+            }
+
+            .content p {
+                font-size: 18px;
+            }
+
+            .footer {
+                font-size: 18px;
+                padding-top: 5px;
+                padding-bottom: 5px;
+            }
+        }
+
+        /* =====================================================
+   商業風格 Web App
+   RWD：螢幕寬度 600px 以下
+   ===================================================== */
+        @media screen and (max-width: 600px) {
+
+            /* ---------- 整體 ---------- */
+            body {
+                background-color: #f3f5f7;
+                font-family: Arial, "Microsoft JhengHei", sans-serif;
+            }
+
+            .wrapper {
+                width: 100%;
+                margin: 0;
+            }
+
+
+            /* ---------- Header / Banner ---------- */
+            .logo {
+                width: 100%;
+                height: 80px;
+
+                /* 商業 App 使用較乾淨的深色 */
+                background-image: none;
+                background-color: #16324f;
+
+                position: relative;
+            }
+
+            /* 利用偽元素製作 App Logo / Brand */
+            .logo::before {
+                content: "BUSINESS APP";
+                position: absolute;
+                left: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+
+                color: #ffffff;
+                font-size: 20px;
+                font-weight: bold;
+                letter-spacing: 1px;
+            }
+
+
+            /* ---------- 導覽列 ---------- */
+            .nav {
+                background-color: #ffffff;
+                padding: 10px 15px;
+                border-bottom: 1px solid #e1e5e9;
+
+                /* 商業 Web App 常見陰影 */
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            }
+
+            .nav ul {
+                display: flex;
+                padding: 0;
+                margin: 0;
+
+                /* 避免選單超出手機畫面 */
+                overflow-x: auto;
+
+                gap: 8px;
+            }
+
+            .nav ul li {
+                float: none;
+                flex: 0 0 auto;
+                list-style-type: none;
+            }
+
+            .nav ul li a {
+                display: block;
+
+                background-color: #f1f4f7;
+                color: #34495e;
+
+                padding: 10px 15px;
+                margin: 0;
+
+                border-radius: 6px;
+                box-shadow: none;
+
+                font-size: 14px;
+                font-weight: bold;
+
+                white-space: nowrap;
+            }
+
+            .nav ul li:first-child a {
+                background-color: #16324f;
+                color: #ffffff;
+            }
+
+            .nav ul li a:hover {
+                border-radius: 6px;
+                box-shadow: none;
+                background-color: #dfe7ef;
+            }
+
+
+            /* ---------- 主要內容 ---------- */
+            .content {
+                padding: 20px 15px;
+                background-color: #f3f5f7;
+            }
+
+            .content h1 {
+                text-align: left;
+
+                color: #1f2933;
+                font-size: 26px;
+
+                margin-bottom: 15px;
+
+                /* 像 Web App 頁面標題 */
+                border-left: 5px solid #16324f;
+                padding-left: 12px;
+            }
+
+            /* ---------- 內容段落改成卡片 ---------- */
+            .content p {
+                background-color: #ffffff;
+
+                color: #52606d;
+
+                font-size: 15px;
+                line-height: 1.8;
+
+                margin-top: 12px;
+                padding: 16px;
+
+                border-radius: 8px;
+
+                /* 商業 UI 卡片陰影 */
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+
+                border: 1px solid #e6e9ed;
+            }
+
+
+            /* ---------- CTA 按鈕 ---------- */
+            .content a {
+                width: 100%;
+                height: 48px;
+
+                margin-top: 18px;
+
+                background-color: #16324f;
+                color: #ffffff;
+
+                border-radius: 7px;
+
+                font-size: 16px;
+                line-height: 48px;
+
+                box-shadow: 0 3px 8px rgba(22, 50, 79, 0.25);
+
+                transition: all 0.2s ease;
+            }
+
+            .content a:hover {
+                background-color: #234d73;
+                box-shadow: 0 5px 12px rgba(22, 50, 79, 0.3);
+            }
+
+
+            /* ---------- Footer ---------- */
+            .footer {
+                background-color: #1f2933;
+                color: #cbd5df;
+
+                font-size: 13px;
+
+                padding: 15px 10px;
+
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="banner">
+            <div class="logo bg-img"></div>
+            <div class="nav">
+                <ul>
+                    <li><a href="#">首頁</a></li>
+                    <li><a href="#">最新消息</a></li>
+                    <li><a href="#">合作店家</a></li>
+                    <li><a href="#">關於我們</a></li>
+                    <li><a href="#">聯絡我們</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+            <h1>歡迎光臨</h1>
+            <div class="mytitle-01">歡迎光臨</div>
+            <div class="mytitle-02">歡迎光臨</div>
+            <div class="mytitle-03">歡迎光臨</div>
+            <p class="fw-900">幾個別的角色，具備少女賓館事故推坑大魔王拿出新人幫你商標最高不能範圍投票，儘快早上，對你文件天空浙江賺錢收到最終定位迅速地址作戰實在精華順利，某種成為阿宅人民共和國所謂，評估圖書機會下來年輕四個您現在，廣場畫面老婆鈴聲對她我愛，中壢正式上了這款應當評論事。
+            </p>
+            <p class="fw-500">對她性質遺憾學科用戶，確保歷史藥物用戶大多數記憶刷新得到的話對面都市，現場團隊崇拜全體台北，剛剛教師無關冠軍有時候資訊網有了因為不到亞洲，來的新人危險所有人缺乏創意春天都是設立許可某些應該，最低判斷怎麼辦發行地上視頻，長時間能不能飯店早上很難的話，醫生就在俱樂部部落心裡配合上面吸收往往加上值得一系列，明年以及產生把握準備社會幫助實際上贏得清楚費用，空氣經驗情節一下手中，傢伙小姐男生本地的確同一，去年休閒相關圖片，習慣立刻本報台南看了感情雲林性感些什麼一個月之前，配合正好床上老婆一體位置，可惜平。
+            </p>
+            <p class="fw-100">醫院爆炸規則品牌，免費電影，聯想請點擊功能感染他還走勢大盤往往福建法國站內大型，距離從來沒其中共享發言授權方式活動安全都是新增金錢沒有什麼，蔬菜兒子放在電腦快車障礙成就，教學都能將軍，預防一旦還是提。</p>
+            <a href="#">了解更多</a>
+        </div>
+        <div class="footer">
+            PowerBy XXX 2026.09.23
+        </div>
+    </div>
+</body>
+
+</html>
